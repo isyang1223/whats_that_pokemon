@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Pokemon Index</title>
+        <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script>
+            $(document).ready(function(){
+                for(var i = 1; i<= 151; i++){
+                    $("#pokemon").append('<img class = "pick" id ="' + i + '" src="http://pokeapi.co/media/img/' + i + '.png">')
+                };
+                $('img').click(function(){
+                    var id = $(this).attr('id');
+                    $('#picture').attr('src', $(this).attr('src'));
+
+                    $.get("https://pokeapi.co/api/v2/pokemon/"+id+"/", function(res) {
+
+                        $('#name').html("<h3>"+res.name+"</h3>");
+
+                        var type = "<ul><h4>Types:</h4>";
+                        for(var j = 0; j < res.types.length; j++){
+                            type += "<li>" + res.types[j].type.name + "</li>";
+                        }
+                        type += "</ul>"
+
+                        $('#type').html(type);
+
+
+
+                        var info =""
+                        info += "<h4>Height:</h4>";
+                        info += res.height;
+                        info += "<h4>Weight:</h4>";
+                        info += res.weight;
+                        $('#info').html(info)
+                        // $('#picture').html('<img id ="' + id + '" src="http://pokeapi.co/media/img/' + id + '.png">' + info)
+                    }, "json");
+                })
+                
+                
+                
+
+                // $(".pick").click(function(){
+                //     var id = this.id;
+                //     $("#card").html('<img id ="' + id + '" src="http://pokeapi.co/media/img/' + id + '.png">')
+
+
+                //  $.get("https://pokeapi.co/api/v2/pokemon/"+id+"/", function(res) {
+                //     console.log(res.name)
+                // }, "json");
+
+                // });
+
+            });
+               
+        </script>
+        <link rel="stylesheet" type="text/css" href="pokemonindex.css">
+    </head>
+    <body>
+       <div id ="pokemon">
+       </div>
+       <div id ="card">
+            <div id ='name'></div>
+            <img id = 'picture' src =''></img>
+            <div id ="type"></div>
+            <div id ="info"></div>
+            
+       </div>  
+    
+            
+    </body>
+</html>

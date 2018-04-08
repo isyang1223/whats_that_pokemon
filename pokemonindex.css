@@ -1,0 +1,31 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#pokemon{
+    width: 740px;
+    display: inline-block;
+}
+#card{
+    padding-top: 20px;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    vertical-align: top;
+    border: 20px solid red;
+    text-align: center;
+
+}
+body{
+    width: 1200px;
+}
+#img{
+    margin-left: 140px;
+    margin-top:40px;
+}
+ul{
+    list-style-position: inside;
+}
+#name{
+    text-transform: capitalize;
+}
